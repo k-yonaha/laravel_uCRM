@@ -1,9 +1,10 @@
 <script setup>
 import { reactive } from 'vue'
 import { Inertia } from '@inertiajs/inertia'
+import ValidationErrors from '@/Components/ValidationErrors.vue'
 
 defineProps({
-    errors:Object
+    errors: Object
 })
 
 const form = reactive({
@@ -16,6 +17,7 @@ const submitFunction = () => {
 </script>
 
 <template>
+    <ValidationErrors :errors="errors"/>
     <form @submit.prevent="submitFunction">
         <input type="text" name="title" v-model="form.title"><br>
         <div v-if="errors.title">{{ errors.title }}</div>
@@ -24,5 +26,4 @@ const submitFunction = () => {
 
         <button>送信</button>
     </form>
-
 </template>
